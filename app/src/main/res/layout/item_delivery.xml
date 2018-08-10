@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="tk.andivinu.deliveryapp.ui.delivery.DeliveryViewModel" />
+        <variable
+            name="listViewModel"
+            type="tk.andivinu.deliveryapp.model.Delivery"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        >
+        <ImageView
+            android:id="@+id/ImageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:imageUrl="@{viewModel.getImageUrl()}"/>
+
+        <TextView
+            app:layout_constraintLeft_toRightOf="@+id/ImageView"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:textSize="15sp"
+            android:id="@+id/descriptionTextView"
+            app:mutableText="@{(viewModel.getDescription())}" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,82 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 26
+
+    defaultConfig {
+        applicationId "tk.andivinu.deliveryapp"
+        minSdkVersion 18
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    dataBinding {
+        enabled = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "com.android.support:support-v4:$android_support_version"
+    implementation "com.android.support:appcompat-v7:$android_support_version"
+    //implementation 'com.android.support:cardview-v7:27.1.1'
+
+    // Support Design
+    implementation "com.android.support:design:$android_support_version"
+
+    // RecyclerView
+    implementation "com.android.support:recyclerview-v7:$android_support_version"
+
+    // Constraint Layout
+    implementation "com.android.support.constraint:constraint-layout:$constraintLayoutVersion"
+
+    // LiveData & ViewModel
+    implementation"android.arch.lifecycle:extensions:$lifecycle_version"
+
+    // Room
+    implementation "android.arch.persistence.room:runtime:$room_version"
+    kapt "android.arch.persistence.room:compiler:$room_version"
+
+    // Data binding
+    kapt 'com.android.databinding:compiler:3.1.0-alpha05'
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
+    compile "com.squareup.okhttp3:logging-interceptor:$httpInterceptorVersion"
+    // moshi
+    implementation "com.squareup.moshi:moshi:$moshiVersion"
+    implementation "com.squareup.moshi:moshi-adapters:$moshiVersion"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
+
+    // Dagger 2
+    implementation "com.google.dagger:dagger:$dagger2_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger2_version"
+    compileOnly "org.glassfish:javax.annotation:3.1.1"
+
+    //Rx
+    implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
+
+    //Glide
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    kapt "com.github.bumptech.glide:compiler:$glideVersion"
+    //map
+    implementation "com.google.android.gms:play-services-maps:$mapVersion"
+}
